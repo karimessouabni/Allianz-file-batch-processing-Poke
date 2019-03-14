@@ -2,7 +2,7 @@ package hello;
 
 public class Person {
 
-    private String lastName;
+    private String personLastName;
     private String firstName;
 
     public Person() {
@@ -10,7 +10,7 @@ public class Person {
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.personLastName = lastName;
     }
 
     public void setFirstName(String firstName) {
@@ -21,17 +21,17 @@ public class Person {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPersonLastName() {
+        return personLastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPersonLastName(String lastName) {
+        this.personLastName = lastName;
     }
 
     @Override
     public String toString() {
-        return "firstName: " + firstName + ", lastName: " + lastName;
+        return "firstName: " + firstName + ", lastName: " + personLastName;
     }
 
 }
