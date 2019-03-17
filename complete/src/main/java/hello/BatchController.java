@@ -14,7 +14,6 @@ import java.util.Date;
 @RestController
 public class BatchController {
 
-
     // Spring Batch jobLancher
     private JobLauncher jobLauncher;
 
