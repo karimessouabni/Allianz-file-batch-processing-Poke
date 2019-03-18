@@ -10,6 +10,7 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.FlatFileParseException;
+import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +29,10 @@ public class BatchConfiguration {
         this.stepBuilderFactory = stepBuilderFactory;
     }
 
+    @Bean
+    public JobLauncherTestUtils jobLauncherTestUtils() {
+        return new JobLauncherTestUtils();
+    }
 
     @Bean("myJob")
     public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {

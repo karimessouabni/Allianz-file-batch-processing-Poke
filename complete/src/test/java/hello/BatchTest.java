@@ -1,29 +1,31 @@
 package hello;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {
+        PersonReader.class})
+public class BatchTest {
 
-@RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {BatchConfiguration.class})
-class BatchTest {
 
     @Autowired
-    private FlatFileItemReader flatFileItemReader;
+    private FlatFileItemReader<Person> personReader;
+
 
     private PersonProcessor personProcessor = new PersonProcessor();
 
     @Test
-    void processor_test() throws Exception {
+    public void processor_test() throws Exception {
         Person p = new Person("karim", "essouabni");
 
         Person res = personProcessor.process(p);
-        Assertions.assertEquals("karim", p.getFirstName());
+        Assert.assertEquals("karim", p.getFirstName());
     }
 
 
