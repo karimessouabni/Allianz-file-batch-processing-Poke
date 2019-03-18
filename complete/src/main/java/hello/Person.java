@@ -12,7 +12,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(String firstName, String lastName) {
+    Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.personLastName = lastName;
     }

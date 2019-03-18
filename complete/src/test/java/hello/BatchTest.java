@@ -16,13 +16,13 @@ class BatchTest {
     @Autowired
     private FlatFileItemReader flatFileItemReader;
 
-    private PersonItemProcessor personItemProcessor = new PersonItemProcessor();
+    private PersonProcessor personProcessor = new PersonProcessor();
 
     @Test
     void processor_test() throws Exception {
         Person p = new Person("karim", "essouabni");
 
-        Person res = personItemProcessor.process(p);
+        Person res = personProcessor.process(p);
         Assertions.assertEquals("karim", p.getFirstName());
     }
 
