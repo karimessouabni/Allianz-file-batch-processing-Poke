@@ -20,6 +20,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
 import javax.sql.DataSource;
+import java.lang.reflect.Field;
+import java.util.stream.Stream;
 
 @Configuration
 @EnableBatchProcessing
@@ -32,13 +34,16 @@ public class BatchConfiguration {
     public StepBuilderFactory stepBuilderFactory;
 
 
+
     @Bean
     public FlatFileItemReader<Person> reader() {
+
+        String[] itemFieldNamesTab = Stream.of(Person.class.getDeclaredFields()).map(Field::getName).toArray(String[]::new);
         return new FlatFileItemReaderBuilder<Person>()
             .name("personItemReader")
             .resource(new ClassPathResource("sample-data.csv"))
             .delimited()
-                .names(new String[]{"firstName", "personLastName"})
+                .names(itemFieldNamesTab)
             .fieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
                 setTargetType(Person.class);
             }})

@@ -1,8 +1,12 @@
 package hello;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Person {
 
+    @NotEmpty
     private String personLastName;
+    @NotEmpty
     private String firstName;
 
     public Person() {
